@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoEletro Pro | Premium Minimalist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f3f4f6;
+            --shadow-dark: #d1d5db;
+            --shadow-light: #ffffff;
+            --green-primary: #22c55e;
+            --green-dark: #16a34a;
+            --green-shadow-dark: #15803d;
+            --green-shadow-light: #4ade80;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500; /* Montserrat Medium como padrão */
+            background-color: var(--bg-color);
+            color: #1f2937;
+        }
+        .square-text {
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.06em;
+            line-height: 0.85;
+        }
+        /* Efeito de Reflexo Premium */
+        .reflect-effect {
+            position: relative;
+            display: inline-block;
+            -webkit-box-reflect: below -15% linear-gradient(transparent 40%, rgba(255,255,255,0.1) 80%, rgba(255,255,255,0.2));
+        }
+        /* Reflexo Sutil para o Rodapé */
+        .reflect-subtle {
+            position: relative;
+            display: inline-block;
+            -webkit-box-reflect: below -5% linear-gradient(transparent 70%, rgba(255,255,255,0.05) 90%, rgba(255,255,255,0.1));
+        }
+        /* Efeito de Relevo (Neumorphism) */
+        .relevo-outer {
+            background: var(--bg-color);
+            box-shadow: 12px 12px 24px var(--shadow-dark), 
+                        -12px -12px 24px var(--shadow-light);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        .relevo-outer:hover {
+            box-shadow: 8px 8px 16px var(--shadow-dark), 
+                        -8px -8px 16px var(--shadow-light);
+            transform: translateY(-2px);
+        }
+        .relevo-inner {
+            background: var(--bg-color);
+            box-shadow: inset 6px 6px 12px var(--shadow-dark), 
+                        inset -6px -6px 12px var(--shadow-light);
+            border-radius: 12px;
+        }
+        .relevo-btn {
+            background: var(--bg-color);
+            box-shadow: 6px 6px 12px var(--shadow-dark), 
+                        -6px -6px 12px var(--shadow-light);
+            transition: all 0.2s ease;
+        }
+        .relevo-btn:active {
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), 
+                        inset -4px -4px 8px var(--shadow-light);
+            transform: scale(0.98);
+        }
+
+        /* Botão INICIAR com Relevo Verde e Pressionamento */
+        .btn-iniciar-relevo {
+            background-color: var(--green-primary);
+            box-shadow: 6px 6px 12px rgba(21, 128, 61, 0.4), 
+                        -6px -6px 12px rgba(74, 222, 128, 0.3);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-iniciar-relevo:active {
+            box-shadow: inset 6px 6px 12px rgba(21, 128, 61, 0.6), 
+                        inset -6px -6px 12px rgba(74, 222, 128, 0.2);
+            transform: scale(0.96);
+        }
+
+        /* Ticker Premium Animation - Loop Infinito Sem Espaço */
+        @keyframes scrollTicker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes blinkGreen {
+            0%, 100% { color: #22c55e; text-shadow: 0 0 8px rgba(34, 197, 94, 0.4); }
+            50% { color: #16a34a; text-shadow: 0 0 2px rgba(22, 163, 74, 0.2); }
+        }
+        /* Animação Piscante para o Botão Iniciar */
+        @keyframes pulseGreen {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.15); }
+        }
+        .btn-iniciar-blink {
+            animation: pulseGreen 1.5s ease-in-out infinite;
+        }
+        /* Parar animação ao clicar */
+        .btn-iniciar-blink:active {
+            animation: none;
+        }
+
+        /* Animação Piscante para Ícones */
+        @keyframes iconBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .blink-icon {
+            animation: iconBlink 2s ease-in-out infinite;
+        }
+
+        /* Animação Pulsante para o Botão do Menu Mobile */
+        @keyframes pulseMenuBtn {
+            0%, 100% { transform: scale(1); box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light); }
+            50% { transform: scale(1.05); box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light); }
+        }
+        .animate-pulse-menu {
+            animation: pulseMenuBtn 2s ease-in-out infinite;
+        }
+
+        /* Animação Pulsante para os Traços do Menu */
+        @keyframes pulseMenuLine {
+            0%, 100% { background-color: #1f2937; transform: scaleX(1); }
+            50% { background-color: #3b82f6; transform: scaleX(1.2); }
+        }
+        .animate-pulse-line {
+            animation: pulseMenuLine 1.5s ease-in-out infinite;
+        }
+
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.02);
+            padding: 6px 0;
+            border-top: 1px solid rgba(0,0,0,0.03);
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+        }
+        .ticker-content {
+            display: flex;
+            width: max-content;
+            white-space: nowrap;
+            animation: scrollTicker 20s linear infinite;
+        }
+        .ticker-item {
+            display: inline-block;
+            padding: 0 2rem;
+            font-weight: 900;
+            font-size: 11px;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            animation: blinkGreen 2s ease-in-out infinite;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        @keyframes shine {
+            from { background-position: -200%; }
+            to { background-position: 200%; }
+        }
+        .premium-shine {
+            background: linear-gradient(90deg, #1f2937 0%, #3b82f6 50%, #1f2937 100%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            animation: shine 5s linear infinite;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.41.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.564.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>

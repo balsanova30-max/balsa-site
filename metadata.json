@@ -1,0 +1,7 @@
+{
+  "name": "AutoEletro Pro - Curso de Elétrica Automotiva",
+  "description": "Uma plataforma moderna e de alto impacto para aprendizado de elétrica automotiva, com design industrial e foco em performance.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
